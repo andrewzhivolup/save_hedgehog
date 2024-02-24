@@ -1,9 +1,7 @@
 import { Button, Input, message } from "antd";
 import React, { useState } from "react";
-import promocodesMock from "../../shared/__mocks__/codes_mock.json";
 import cls from "./CodesInput.module.scss";
-
-const promocodes = promocodesMock.codes;
+import { checkPromo } from "../../shared/api/reqs/checkPromo";
 
 const CodesInput = (options) => {
   const { promoLength, defaultValue, ...props } = options;
@@ -13,13 +11,13 @@ const CodesInput = (options) => {
   const [inputStatus, setInputStatus] = useState("");
 
   const [messageApi, contextHolder] = message.useMessage();
-  const success = (content) => {
+  const successMessage = (content) => {
     messageApi.open({
       type: "success",
       content,
     });
   };
-  const error = (content) => {
+  const errorMessage = (content) => {
     messageApi.open({
       type: "error",
       content,
@@ -33,16 +31,18 @@ const CodesInput = (options) => {
 
     if (promo.length < promoLength) {
       setInputStatus("error");
-      error(`Промокод должен состоять из ${promoLength} символов`);
+      errorMessage(`Промокод должен состоять из ${promoLength} символов`);
       return;
     }
 
-    if (promocodes.includes(promo)) {
+    const { success, data, error } = checkPromo(promo);
+
+    if (success) {
       setInputStatus("");
-      success("Промокод успешно активирован");
+      successMessage(data);
     } else {
       setInputStatus("error");
-      error(`Такого промокода не существует`);
+      errorMessage(error);
     }
   }
 
