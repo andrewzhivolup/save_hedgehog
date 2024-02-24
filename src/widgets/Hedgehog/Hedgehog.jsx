@@ -1,11 +1,18 @@
 import cls from "./Hedgehog.module.scss";
 import hedgehog from "../../shared/lib/assets/images/hedgehog.png";
 
-const Hedgehog = () => {
+const Hedgehog = (options) => {
+  const { size, ...props } = options;
+
   return (
-    <div>
-      <img className={cls.Hedgehog} src={hedgehog} alt="Тут должен быть ёж" />
-    </div>
+    <img
+      className={cls.Hedgehog}
+      src={hedgehog}
+      height={size}
+      width={size}
+      alt="Тут должен быть ёж"
+      {...props}
+    />
   );
 };
 

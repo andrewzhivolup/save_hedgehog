@@ -1,8 +1,8 @@
 .Hedgehog {
-  --hedgehog-size: 100px;
+  // --hedgehog-size: 100px;
 
-  height: var(--hedgehog-size);
-  width: var(--hedgehog-size);
+  // height: var(--hedgehog-size);
+  // width: var(--hedgehog-size);
   transform: scale(-1, 1);
   animation: rotate 3s infinite;
   @keyframes rotate {
