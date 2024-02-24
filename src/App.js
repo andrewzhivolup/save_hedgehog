@@ -1,4 +1,5 @@
-import "./App.css";
+import { Slider } from "antd";
+import "./App.scss";
 import { Hedgehog } from "./widgets/Hedgehog";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">спаси ежа!</header>
       <Hedgehog />
+      <Slider defaultValue={30} />
     </div>
   );
 }
