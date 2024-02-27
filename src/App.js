@@ -1,5 +1,6 @@
 import "./App.scss";
 import { CodesInput } from "./widgets/CodesInput";
+import { Header } from "./widgets/Header";
 import { Hedgehog } from "./widgets/Hedgehog";
 import { HedgehogSlider } from "./widgets/HedgehogSlider";
 
@@ -9,6 +10,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <Hedgehog size={hedgehogSize} />
       <HedgehogSlider />
       <CodesInput promoLength={promoLength} defaultValue="D1SQ8EPDS3" />
